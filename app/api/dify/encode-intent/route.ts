@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
-import { encodeFunctionData, parseAbi } from 'viem';
+import { encodeFunctionData, parseAbi, parseUnits } from 'viem';
+
 
 const ROUTER_ABI = parseAbi([
   'function executeSwapIntent((address,address,address,uint256,uint256,uint256,uint256), bytes, address, bytes)'
@@ -10,7 +11,7 @@ export async function POST(req: Request) {
     const { tokenA, tokenB, amount, action } = await req.json();
 
     // 1. 模拟业务逻辑：计算最小输出 (这里实际应调用合约或行情 API)
-    const minAmountOut = BigInt(amount) * BigInt(99) / BigInt(100); // 1% 滑点
+    const minAmountOut = BigInt(parseUnits(amount, 18)) * BigInt(99) / BigInt(100); // 1% 滑点
     const deadline = BigInt(Math.floor(Date.now() / 1000) + 3600); // 1小时有效
     const nonce = 0; // 实际应从链上获取
 
