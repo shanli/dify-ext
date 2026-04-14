@@ -1,0 +1,22 @@
+identity:
+  name: nextjs_viem_encoder
+  author: yourname
+  label: Web3 Intent Encoder (Next.js)
+description: 使用 Viem 将意图参数编码为合约 Calldata。
+parameters:
+  - name: tokenA
+    type: string
+    description: 输入代币地址 (0x...)
+    required: true
+  - name: tokenB
+    type: string
+    description: 输出代币地址 (0x...)
+    required: true
+  - name: amount
+    type: string
+    description: 交易数量 (单位：Wei)
+    required: true
+  - name: action
+    type: string
+    description: 动作
+    required: true
