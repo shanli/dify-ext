@@ -11,7 +11,7 @@ export async function POST(req: Request) {
     const { tokenA, tokenB, amount, action } = await req.json();
 
     // 1. 模拟业务逻辑：计算最小输出 (这里实际应调用合约或行情 API)
-    const minAmountOut = BigInt(parseUnits(amount, 18)) * BigInt(99) / BigInt(100); // 1% 滑点
+    const minAmountOut = parseUnits(amount, 18); //* BigInt(99) / BigInt(100); // 1% 滑点
     const deadline = BigInt(Math.floor(Date.now() / 1000) + 3600); // 1小时有效
     const nonce = 0; // 实际应从链上获取
 
@@ -39,7 +39,7 @@ export async function POST(req: Request) {
         user: '0x0000000000000000000000000000000000000000',//userAddress,
         tokenA,
         tokenB,
-        amountIn: BigInt(amount),
+        amountIn: parseUnits(amount, 18),//BigInt(amount),
         minAmountOut,
         nonce,
         deadline,
