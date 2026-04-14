@@ -12,7 +12,7 @@ export async function POST(req: Request) {
 
     // 1. 模拟业务逻辑：计算最小输出 (这里实际应调用合约或行情 API)
     const minAmountOut = parseUnits(amount, 18); //* BigInt(99) / BigInt(100); // 1% 滑点
-    const deadline = BigInt(Math.floor(Date.now() / 1000) + 3600); // 1小时有效
+    const deadline = Math.floor(Date.now() / 1000) + 3600; // 1小时有效
     const nonce = 0; // 实际应从链上获取
 
     // 2. 构造 EIP-712 签名数据结构 (传回前端供用户签名)
