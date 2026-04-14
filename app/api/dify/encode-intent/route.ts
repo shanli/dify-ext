@@ -5,7 +5,7 @@ const ROUTER_ABI = parseAbi([
   'function executeSwapIntent((address,address,address,uint256,uint256,uint256,uint256), bytes, address, bytes)'
 ]);
 
-export async function GET(req: Request) {
+export async function POST(req: Request) {
   try {
     const { tokenA, tokenB, amount, action } = await req.json();
 
